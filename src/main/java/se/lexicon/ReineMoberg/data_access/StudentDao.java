@@ -2,7 +2,7 @@ package se.lexicon.ReineMoberg.data_access;
 
 import se.lexicon.ReineMoberg.models.Student;
 
-import java.util.List;
+import java.util.Set;
 
 public interface StudentDao {
 
@@ -10,7 +10,7 @@ public interface StudentDao {
 
     Student find(int id);
 
-    List<Student> findAll();
+    Set<Student> findAll();
 
     void delete(int id);
 

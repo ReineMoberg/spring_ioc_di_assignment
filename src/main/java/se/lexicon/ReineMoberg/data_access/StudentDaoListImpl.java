@@ -1,21 +1,21 @@
 package se.lexicon.ReineMoberg.data_access;
 
+import org.springframework.stereotype.Component;
 import se.lexicon.ReineMoberg.data_access.sequencers.StudentSequencer;
 import se.lexicon.ReineMoberg.models.Student;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
+@Component
 public class StudentDaoListImpl implements StudentDao{
 
-    private List<Student> studentList = new ArrayList<>();
+    private Set<Student> studentSet = new HashSet<>();
 
     @Override
     public Student save(Student student) {
         if (student.getId() == 0) {
             student.setId(StudentSequencer.nextStudentId());
-            studentList.add(student);
+            studentSet.add(student);
         } else {
             Student studentToUpdate = find(student.getId());
             studentToUpdate.setName(student.getName());
@@ -38,19 +38,19 @@ public class StudentDaoListImpl implements StudentDao{
         } else {
             return null;
         }*/
-        return studentList.stream()
+        return studentSet.stream()
                 .filter(p -> p.getId() == id)
                 .findFirst()
                 .orElse(null);
     }
 
     @Override
-    public List<Student> findAll() {
-        return studentList;
+    public Set<Student> findAll() {
+        return studentSet;
     }
 
     @Override
     public void delete(int id) {
-        studentList.removeIf(p -> p.getId() == id);
+        studentSet.removeIf(p -> p.getId() == id);
     }
 }
