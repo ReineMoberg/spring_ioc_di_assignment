@@ -5,6 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import se.lexicon.ReineMoberg.configs.ComponentScanConfig;
 import se.lexicon.ReineMoberg.data_access.StudentDao;
 import se.lexicon.ReineMoberg.models.Student;
+import se.lexicon.ReineMoberg.util.UserInputService;
 
 import java.util.Set;
 
@@ -40,9 +41,16 @@ public class App
         studentSet.forEach(System.out::println);*/
 
         //Test delete student
-        Student student1 = studentDao.save(new Student("Reine Moberg", "mail1@server.com", "1111"));
+        /*Student student1 = studentDao.save(new Student("Reine Moberg", "mail1@server.com", "1111"));
         Student student2 = studentDao.save(new Student("Anna Karlsson", "mail2@server.com", "2222"));
         studentDao.delete(1);
-        studentDao.findAll().forEach(System.out::println);
+        studentDao.findAll().forEach(System.out::println);*/
+
+        //Test user input scanner
+        UserInputService userInputService = context.getBean(UserInputService.class);
+        String testString = userInputService.getString();
+        System.out.println(testString);
+        int testNumber = userInputService.getInt();
+        System.out.println(testNumber);
     }
 }
