@@ -2,7 +2,7 @@ package se.lexicon.ReineMoberg.service;
 
 import se.lexicon.ReineMoberg.models.Student;
 
-import java.util.Set;
+import java.util.List;
 
 public interface StudentManagement {
 
@@ -14,7 +14,7 @@ public interface StudentManagement {
 
     Student remove(int id);
 
-    Set<Student> findAll();
+    List<Student> findAll();
 
     Student edit(Student student);
 

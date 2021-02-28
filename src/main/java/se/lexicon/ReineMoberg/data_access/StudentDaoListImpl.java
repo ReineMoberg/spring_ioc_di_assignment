@@ -16,13 +16,14 @@ public class StudentDaoListImpl implements StudentDao{
         if (student.getId() == 0) {
             student.setId(StudentSequencer.nextStudentId());
             studentSet.add(student);
+            return student;
         } else {
-            Student studentToUpdate = find(student.getId());
-            studentToUpdate.setName(student.getName());
-            studentToUpdate.setEmail(student.getEmail());
-            studentToUpdate.setPassword(student.getPassword());
+            Student updatedStudent = find(student.getId());
+            updatedStudent.setName(student.getName());
+            updatedStudent.setEmail(student.getEmail());
+            updatedStudent.setPassword(student.getPassword());
+            return updatedStudent;
         }
-        return student;
     }
 
     @Override
